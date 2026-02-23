@@ -3,26 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>com.programmingtechie</groupId>
+		<artifactId>microservices-new</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
 	<groupId>com.programmingtechie</groupId>
-	<artifactId>microservices-new</artifactId>
+	<artifactId>discovery-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>microservices-new</name>
-	<description>microservices-new</description>
-	<packaging>pom</packaging>
-
-	<modules>
-		<module>order-service</module>
-		<module>product-service</module>
-		<module>inventory-service</module>
-		<module>discovery-server</module>
-	</modules>
-
+	<name>discovery-server</name>
+	<description>discovery-server</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -38,13 +27,15 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
-		<spring-cloud.version>2023.0.3</spring-cloud.version>
-
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 
 		<dependency>
@@ -56,13 +47,6 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.testcontainers</groupId>
-				<artifactId>testcontainers-bom</artifactId>
-				<version>1.16.3</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
 				<version>${spring-cloud.version}</version>
@@ -70,10 +54,8 @@
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
-
-
-
 	</dependencyManagement>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -82,5 +64,25 @@
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
 
 </project>
